@@ -1,0 +1,13 @@
+eclipse.preferences.version=1
+encoding//src/psn/controller/BlogController.java=UTF-8
+encoding//src/psn/controller/BrandController.java=UTF-8
+encoding//src/psn/controller/CategoriesController.java=UTF-8
+encoding//src/psn/controller/HomeController.java=UTF-8
+encoding//src/psn/controller/LoginController.java=UTF-8
+encoding//src/psn/controller/ProductController.java=UTF-8
+encoding//src/psn/controller/UserController.java=UTF-8
+encoding//src/psn/model/dao/CategoriesDAOImp.java=UTF-8
+encoding//src/psn/model/dao/ProductDAOImp.java=UTF-8
+encoding//src/psn/model/dao/ReportDAOImp.java=UTF-8
+encoding//src/psn/model/dao/UserDAOImp.java=UTF-8
+encoding//src/psn/model/entity/WebUser.java=UTF-8
