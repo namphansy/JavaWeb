@@ -174,4 +174,15 @@ public class UserDAOImp implements UserDAO{
 		
 		return total;
 	}
+
+	@Override
+	public boolean checkUserNameRegister(String userName) {
+		boolean check = false;
+		
+		WebUser user = getUserByUserName(userName);
+		if(user == null) {
+			return !check;
+		}
+		return check;
+	}
 }

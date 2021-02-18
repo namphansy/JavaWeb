@@ -11,4 +11,5 @@ public interface UserDAO {
 	public boolean save(WebUser webUser);
 	public boolean merge(WebUser webUser);
 	public Integer totalAccountUser();
+	public boolean checkUserNameRegister(String userName);
 }

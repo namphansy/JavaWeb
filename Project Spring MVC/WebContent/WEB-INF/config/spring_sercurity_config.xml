@@ -34,6 +34,9 @@
 		 -->
 		<logout logout-url="/logoutAction"
 			logout-success-url="/logout" delete-cookies="JSESSIONID" />
+		
+		<!-- Duy trì đăng nhập -->
+		 <remember-me key="uniqueAndSecret" token-validity-seconds="1296000"/>	
 	</http>
 	<authentication-manager>
 		<authentication-provider

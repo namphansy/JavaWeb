@@ -59,6 +59,7 @@
 															<th>Giá trị hóa đơn</th>
 															<th>Ngày tạo</th>
 															<th>Trạng thái</th>
+															<th>Tên tài khoản</th>
 															<th>Hành động</th>
 														</tr>
 													</thead>
@@ -83,7 +84,9 @@
 																		<c:otherwise>
 																			<p style="color: red">Inactive</p>
 																		</c:otherwise>
-																	</c:choose></td>
+																	</c:choose>
+																</td>
+																<td>${order.webUserOrders.userName}</td>
 																<td>
   																	<a href="updateOrders.htm?ordersId=${order.orderId}">
   																		<i class="far fa-edit"></i>

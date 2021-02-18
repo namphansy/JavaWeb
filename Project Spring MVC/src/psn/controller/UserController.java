@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import psn.model.entity.WebUser;
@@ -75,5 +76,14 @@ public class UserController {
 		if(check == true) {
 			return "redirect:adminGetAllUser.htm";
 		} else return "error";
+	}
+	
+	@RequestMapping(value = "/checkUserName")
+	private @ResponseBody String checkUserNameRegister(String userName) {
+		String result = "";
+		boolean check = webUserService.checkUserNameRegister(userName);
+		if(check) result = "true";
+		else result = "false";
+		return result;
 	}
 }

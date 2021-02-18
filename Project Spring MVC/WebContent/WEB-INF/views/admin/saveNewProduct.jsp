@@ -219,7 +219,7 @@
 			// Kiểm tra mã sản phẩm nhập vào //
 			var isSuccess = false;
 		    $.validator.addMethod(
-		        "uniqueUserName", 
+		        "uniqueProductId", 
 		        function(value, element) {
 		            $.ajax({
 		                type: "GET",
@@ -235,7 +235,7 @@
 		             });
 		            return isSuccess; 
 		        },
-		        "Username is Already Taken"
+		        "ProductId is Already Taken"
 		    );
 			
 			$('#formSave').validate({
@@ -243,7 +243,7 @@
 					"productId" : {
 						required : true,
 						maxlength : 5,
-						uniqueUserName: true
+						uniqueProductId: true
 					},
 					"productName" : {
 						required : true,
@@ -274,7 +274,7 @@
 					"productId" : {
 						required : "Bắt buộc nhập mã sản phẩm",
 						maxlength : "Nhập tối đa 5 ký tự",
-						uniqueUserName: "Mã sản phẩm đã tồn tại" 
+						uniqueProductId: "Mã sản phẩm đã tồn tại" 
 					},
 					"productName" : {
 						required : "Bắt buộc nhập tên sản phẩm",

@@ -50,4 +50,10 @@ public class WebUserServiceImp implements WebUserService{
 		return userDao.totalAccountUser();
 	}
 
+	@Override
+	public boolean checkUserNameRegister(String userName) {
+		// TODO Auto-generated method stub
+		return userDao.checkUserNameRegister(userName);
+	}
+
 }

@@ -28,13 +28,15 @@
 			<div class="animate form login_form">
 				<section class="login_content">
 					<form action="<c:url value='loginAction'/>" method="post" id="formLogin">
-						<h1>Đăng nhập trang quản trị</h1>
+						<h1>Đăng nhập</h1>
 						<div>
-							<input type="text" class="form-control" name="username" placeholder="Tên đăng nhập" />
-								 
+							<input type="text" class="form-control" name="username" placeholder="Tên đăng nhập" /> 
 						</div>
 						<div>
 							<input type="password" class="form-control" name="password" placeholder="Mật khẩu" />		
+						</div>
+						<div style="margin-bottom: 10px">
+							Duy trì đăng nhập: <input type="checkbox" name="remember-me" />
 						</div>
 						<div>
 							<input type="submit" value="Đăng nhập">
@@ -42,7 +44,6 @@
 						<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
 						<div class="clearfix"></div>	
 					</form>
-					<h1>Web Login</h1>
 					<h2>${message}</h2>
 				</section>
 			</div>

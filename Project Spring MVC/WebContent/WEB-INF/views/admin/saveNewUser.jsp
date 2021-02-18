@@ -99,11 +99,35 @@
 		
 		<!---------- Validate Form ----------------> 
 	<script type="text/javascript">
+	
+	// Kiểm tra mã sản phẩm nhập vào //
+	var isSuccess = false;
+    $.validator.addMethod(
+        "uniqueUserName", 
+        function(value, element) {
+            $.ajax({
+                type: "GET",
+                url: "/Final_Exam/checkUserName",
+                data: "userName="+value,
+                async: false,
+                //dataType:"html",
+                success: function(msg)
+                {
+                	isSuccess = (msg == "true") ? true : false;
+                    console.log(isSuccess);
+                }
+             });
+            return isSuccess; 
+        },
+        "Username is Already Taken"
+    );
+	
 	$(document).ready(function() {
 		$('#formSave').validate({
 			rules: {
 				"userName":{
 					required: true,
+					uniqueUserName: true
 				},
 				"password":{
 					required: true,
@@ -117,6 +141,7 @@
 		messages: {
 			"userName": {
 				required: "Tên admin không được để trống",
+				uniqueUserName: "Tên admin đã tồn tại"
 			},
 			"password": {
 				required: "Mật khẩu không được để trống",
