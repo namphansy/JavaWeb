@@ -164,7 +164,7 @@
 										<div class="ln_solid">
 											<div class="form-group">
 												<div class="col-md-6 offset-md-3">
-													<input type="submit" value="Create">
+													<input type="submit" value="Tạo mới">
 													<button type='reset' class="btn btn-success">Reset</button>
 												</div>
 											</div>
@@ -235,7 +235,7 @@
 		             });
 		            return isSuccess; 
 		        },
-		        "ProductId is Already Taken"
+		        "ProductId đã tồn tại"
 		    );
 			
 			$('#formSave').validate({

@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>ĐÃ CÓ LỖI !!!!!!!!!</title>
 </head>
 <body>
-
+ <h1> ${message}</h1>
 </body>
 </html>

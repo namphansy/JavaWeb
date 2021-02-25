@@ -109,6 +109,10 @@
   																	<a href="updateStatusProduct.htm?productId=${pro.productId}"
   																	title="cập nhật trạng thái">
   																		<i class="fas fa-sync"></i>
+  																	</a>
+  																	<a href="adminInitInsertProductDetails?productId=${pro.productId}"
+  																		title="Thêm sản phẩm chi tiết">
+  																		<i class="fas fa-plus-square"></i>
   																	</a>  
 																</td>
 															</tr>

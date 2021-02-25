@@ -1,25 +1,15 @@
 package psn.controller;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import psn.exception.ResourceNotFoundException;
 import psn.model.entity.Brand;
 import psn.model.entity.Categories;
 import psn.model.entity.Color;
@@ -108,10 +98,13 @@ public class ProductController {
 	}
 
 	@RequestMapping("/adminInitUpdateProduct.htm")
-	public ModelAndView initUpdateProduct(String productId) {
+	public ModelAndView initUpdateProduct(String productId) throws ResourceNotFoundException {
 		ModelAndView mav = new ModelAndView("updateProduct");
 
 		Products updateProduct = productService.findById(productId);
+		if(updateProduct == null) { 
+			 throw new ResourceNotFoundException("không tìm được sản phẩm");
+		}
 		mav.addObject("updateProduct", updateProduct);
 
 		List<Categories> listCat = categoriesService.getAll();
@@ -157,5 +150,11 @@ public class ProductController {
 		else result = "false";
 		
 		return result;
+	}
+	
+	@RequestMapping(value = "/viewInfoProduct")
+	private @ResponseBody Products viewDetails(String productId) {
+		Products products = productService.findById(productId);
+		return products;
 	}
 }

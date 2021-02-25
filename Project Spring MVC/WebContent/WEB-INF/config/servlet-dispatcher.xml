@@ -10,13 +10,21 @@
         http://www.springframework.org/schema/context/spring-context.xsd  
         http://www.springframework.org/schema/mvc  
         http://www.springframework.org/schema/mvc/spring-mvc.xsd">
-        <context:component-scan base-package="psn.controller,psn.model.dao,psn.model.service"/>
-        
+        	
+        	<!-- Scan component -->
+        <context:component-scan 
+        	base-package="psn.controller,
+        	psn.model.dao,
+        	psn.model.service,
+        	psn.exception"
+        />
+        	<!-- Cấu hình đường dẫn jsp -->
         <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         	<property name="prefix" value="/WEB-INF/views/admin/"></property>
         	<property name="suffix" value=".jsp"></property>    
         </bean>
-        
+         	
+         	<!-- Cấu hình upload file -->
         <bean id="multipartResolver"   
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 			<!-- one of the properties available; the maximum file size in bytes -->
@@ -26,7 +34,4 @@
         <mvc:resources mapping="/resources/**" location="/resources/"/>
         <mvc:annotation-driven/>
         
-        
-
-
 </beans>

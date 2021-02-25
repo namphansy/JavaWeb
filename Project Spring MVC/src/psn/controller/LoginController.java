@@ -18,17 +18,12 @@ public class LoginController {
 		if(principal instanceof UserDetails) return "redirect:admin";
 		
 		if(error != null) {
-			model.addAttribute("message", "Đăng nhập thất bại!");
+			model.addAttribute("message", "Tài khoản hoặc mật khẩu không đúng !!!");
 		}
 		return "login";
 		
 		
 	}
-	
-//	@RequestMapping("/admin")
-//	public String admin() {
-//	   return "home";
-//	}
 	 
     @RequestMapping("/logout")
 	public String logout(final Model model) {

@@ -2,7 +2,6 @@ package psn.model.dao;
 
 import java.util.List;
 
-import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -17,7 +16,7 @@ public class CategoriesDAOImp implements CategoriesDAO{
 	@Autowired
 	private SessionFactory sessionFactory;
 
-	@SuppressWarnings("deprecation")
+	@SuppressWarnings({ "unchecked" })
 	@Override
 	public List<Categories> getAll() {
 		Session session = null;
@@ -27,9 +26,7 @@ public class CategoriesDAOImp implements CategoriesDAO{
 			session = sessionFactory.openSession();
 			transaction = session.beginTransaction();
 			
-			Criteria criteria = session.createCriteria(Categories.class);
-			
-			listAllCategories = criteria.list();
+			listAllCategories = session.createQuery("from Categories").list();
 			transaction.commit();
 		
 		} catch (Exception e) {

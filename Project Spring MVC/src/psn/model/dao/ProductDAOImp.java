@@ -7,8 +7,6 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.criterion.Projection;
-import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -32,10 +30,7 @@ public class ProductDAOImp implements ProductDAO {
 			session = sessionFactory.openSession();
 			transaction = session.beginTransaction();
 
-			@SuppressWarnings("deprecation")
-			Criteria criteria = session.createCriteria(Products.class);
-
-			listAllProduct = criteria.list();
+			listAllProduct = session.createQuery("from Products").list();
 			transaction.commit();
 
 		} catch (Exception e) {
@@ -190,9 +185,11 @@ public class ProductDAOImp implements ProductDAO {
 		try {
 			session = sessionFactory.openSession();
 			transaction = session.beginTransaction();
+			
 			Criteria criteria = session.createCriteria(Products.class);
 			criteria.add(Restrictions.eq("productStatus", status));
 			listProductByStatus = criteria.list();
+			
 			transaction.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -204,7 +201,7 @@ public class ProductDAOImp implements ProductDAO {
 		return listProductByStatus;
 	}
 	
-	//------- Số sản phẩm còn Active ------------------//
+	//------- Số sản phẩm đang Active ------------------//
 	public Integer totalProdcutActive(Boolean status) {
 		Session session = null;
 		Transaction transaction = null;
@@ -232,8 +229,9 @@ public class ProductDAOImp implements ProductDAO {
 		return total;
 	}
 	
-	@Override
+	
 	//----- Kiểm tra mã sản phẩm khi tạo mới ---------//
+	@Override
 	public boolean checkProductId(String productId) {
 		Session session = null;
 		Transaction transaction = null;
@@ -243,8 +241,8 @@ public class ProductDAOImp implements ProductDAO {
 			session = sessionFactory.openSession();
 			transaction = session.beginTransaction();
 			
-			Criteria criteria = session.createCriteria(Products.class);
-			List<Products>listAllProduct = criteria.list();
+			@SuppressWarnings("unchecked")
+			List<Products>listAllProduct = session.createQuery("from Products").list();
 			
 			for(Products pro : listAllProduct) {
 				if(pro.getProductId().equals(productId)) {
@@ -264,4 +262,5 @@ public class ProductDAOImp implements ProductDAO {
 		
 		return check;
 	}
+
 }

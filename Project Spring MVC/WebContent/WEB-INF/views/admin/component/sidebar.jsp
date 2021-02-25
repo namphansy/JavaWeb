@@ -29,10 +29,7 @@
                     </ul>
                   </li>
                   <li><a href="<%=request.getContextPath()%>/adminGetAllBrand.htm">THƯƠNG HIỆU</a></li>
-                  <li><a href="<%=request.getContextPath()%>/adminGetAllOrders.htm">GIỎ HÀNG</a></li>
-                  <li><a href="<%=request.getContextPath()%>/adminGetAllComment.htm">BÌNH LUẬN</a></li>
-                  <li><a href="<%=request.getContextPath()%>/adminShowContact.htm">THÔNG TIN LIÊN LẠC</a></li>
-                  <li><a href="<%=request.getContextPath()%>/adminGetAllBlog.htm">BÀI VIẾT</a></li>
+                  <li><a href="<%=request.getContextPath()%>/adminGetAllOrders.htm">HÓA ĐƠN</a></li>
                   <li>
                   	<form action="<c:url value='/logoutAction'/>" method="post" 
                   		style="padding: 13px 15px 12px">
@@ -57,7 +54,6 @@
                   <li role="presentation" class="nav-item dropdown open">
                     <a href="javascript:;" class="dropdown-toggle info-number" id="navbarDropdown1" data-toggle="dropdown" aria-expanded="false">
                       <i class="fa fa-envelope-o"></i>
-                      <span class="badge bg-green">6</span>
                     </a>
                   </li>
                 </ul>

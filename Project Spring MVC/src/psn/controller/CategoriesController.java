@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import psn.exception.ResourceNotFoundException;
 import psn.model.entity.Categories;
 import psn.model.service.CategoriesService;
 
@@ -52,10 +52,11 @@ public class CategoriesController {
 	
 	/*------- Cập nhật danh mục ---------------*/
 	@RequestMapping(value = "/adminInitUpdateCategories.htm")
-	private ModelAndView initUpdateCategories(int catalogId) {
+	private ModelAndView initUpdateCategories(int catalogId) throws ResourceNotFoundException{
 		ModelAndView mav = new ModelAndView("updateCategories");
 		// Lấy thông tin danh mục cần cập nhật
 		Categories updateCategories = categoriesService.findById(catalogId);
+		if(updateCategories == null) throw new ResourceNotFoundException("Không nhận diện được mã danh mục");
 		mav.addObject("updateCategories", updateCategories);
 		// Lấy danh mục cha
 		List<Categories> listCategories = categoriesService.getAll();

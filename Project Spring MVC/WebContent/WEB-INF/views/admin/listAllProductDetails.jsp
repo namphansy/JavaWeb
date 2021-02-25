@@ -49,12 +49,6 @@
 									<div class="row">
 										<div class="col-sm-12">
 											<div class="card-box table-responsive">
-
-												<!-- Thêm sản phẩm mới -->
-												<button type="button" class="btn btn-primary">
-													<a href="adminInitInsertProductDetails"
-														style="color: white"> Thêm sản phẩm mới </a>
-												</button>
 												<!-- Bảng hiển thị -->
 												<table id="datatable"
 													class="table table-striped table-bordered"

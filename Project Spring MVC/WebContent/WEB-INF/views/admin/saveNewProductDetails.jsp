@@ -37,14 +37,18 @@
 									<f:form action="insertProductDetails.htm"  modelAttribute="productDetails" method="post">
 										<span class="section">Thêm chi tiết sản phẩm</span>
 										<div class="field item form-group">
-											<label class="col-form-label col-md-3 col-sm-3  label-align">Sản phẩm cha<span
+											<label class="col-form-label col-md-3 col-sm-3  label-align">Tên sản phẩm cha<span
 												class="required">*</span></label>
 											<div class="col-md-6 col-sm-6">
-												<f:select path="products.productId">
-													<c:forEach items="${listProduct}" var="pro">
-														<f:option value="${pro.productId}">${pro.productName}</f:option>
-													</c:forEach>
-												</f:select>
+												<input class="form-control" value="${productParent.productName}" readonly="readonly"/>	
+											</div>
+										</div>
+										<div class="field item form-group">
+											<label class="col-form-label col-md-3 col-sm-3  label-align">Mã sản phẩm cha<span
+												class="required">*</span></label>
+											<div class="col-md-6 col-sm-6">	
+												<f:input class="form-control" path="products.productId" 
+													value="${productParent.productId}" readonly="true"/>	
 											</div>
 										</div>
 										<div class="field item form-group">

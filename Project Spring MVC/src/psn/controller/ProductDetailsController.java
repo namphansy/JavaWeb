@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import psn.exception.ResourceNotFoundException;
 import psn.model.entity.Products;
 import psn.model.entity.ProductsDetails;
 import psn.model.entity.Size;
@@ -34,14 +35,17 @@ public class ProductDetailsController {
 	}
 	
 	@RequestMapping("/adminInitInsertProductDetails")
-	private ModelAndView initInsert() {
+	private ModelAndView initInsert(String productId) throws ResourceNotFoundException{
 		ModelAndView mav = new ModelAndView("saveNewProductDetails");
+		
+		Products product = productService.findById(productId);
+		// Kiểm tra mã sản phẩm
+		if(product == null) throw new ResourceNotFoundException("Không nhận diện được mã sản phẩm");
+			
+		mav.addObject("productParent", product);
 		
 		ProductsDetails productDetails = new ProductsDetails();
 		mav.addObject("productDetails", productDetails);
-		
-		List<Products> listProduct = productService.getListProductByStatus(true);
-		mav.addObject("listProduct", listProduct);
 		
 		List<Size> listSize = sizeService.listSizes();
 		mav.addObject("listSize", listSize);
@@ -59,10 +63,12 @@ public class ProductDetailsController {
 	}
 	
 	@RequestMapping(value = "/adminInitUpdateProductDetails")
-	private ModelAndView initUpdate(int productDetailsId) {
+	private ModelAndView initUpdate(int productDetailsId) throws ResourceNotFoundException{
 		ModelAndView mav = new ModelAndView("updateProductDetails");
 		
 		ProductsDetails productDetailsUpdate = productDetailsService.findById(productDetailsId);
+		if(productDetailsUpdate == null) throw new ResourceNotFoundException("Không nhận diện được mã chi tiết sản phẩm");
+			
 		mav.addObject("productDetails", productDetailsUpdate);
 		
 		List<Products> listProduct = productService.getListProductByStatus(true);
